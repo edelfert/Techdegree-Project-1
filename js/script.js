@@ -12,11 +12,11 @@ project 1 - A Random Quote Generator
 ***/
 
 const quotes = [
-  {quote: 'Trying to define yourself is like trying to bite your own teeth.', name: 'Alan Watts'},
-  {quote: 'What good is the warmth of summer, without the cold of winter to give it sweetness.', name: 'John Steinbeck' },
-  {quote: 'The man who does not read good books has no advantage over the man who cannot read them.', name: 'Mark Twain'},
-  {quote: 'Sometimes even to live is an act of courage.', name: 'Seneca'},
-  {quote: 'Freedom is nothing but a chance to be better.',name: 'Albert Camus'},
+  {quote: 'Trying to define yourself is like trying to bite your own teeth.', source: 'Alan Watts'},
+  {quote: 'What good is the warmth of summer, without the cold of winter to give it sweetness.', source: 'John Steinbeck', citation: 'Travels with Charley'},
+  {quote: 'The man who does not read good books has no advantage over the man who cannot read them.', source: 'Mark Twain', year: '1895'},
+  {quote: 'Sometimes even to live is an act of courage.', source: 'Seneca'},
+  {quote: 'Freedom is nothing but a chance to be better.', source: 'Albert Camus'},
 
 ]
 
@@ -30,20 +30,24 @@ function getRandomQuote(array) {
 
   const randomQuote = Math.ceil(Math.random() * quotes.length - 1) 
 
-  //creates variables so that the function can return both the quote and name
-  let quoteRandom = quotes[randomQuote].quote
-  let nameRandom = quotes[randomQuote].name
-  return {quoteRandom, nameRandom}
+  //creates variables so that the function can return quote, source, citation, and year
+  let quoteRandom = quotes[randomQuote].quote;
+  let nameRandom = quotes[randomQuote].source;
+  let randomYear = quotes[randomQuote].year;
+  let randomCitation = quotes[randomQuote].citation
+  return {quoteRandom, nameRandom, randomYear, randomCitation}
 }
 
-//initializes function and pulls the name and quote from it
-let randomQuote = getRandomQuote()
+//initializes function and pulls the data from object
+// let randomQuote = getRandomQuote(quotes)
 
-let quoteRandom = randomQuote.quoteRandom
-let nameRandom = randomQuote.nameRandom
+// let quoteRandom = randomQuote.quoteRandom
+// let nameRandom = randomQuote.nameRandom
+// let yearRandom = randomQuote.randomYear
+// let citationRandom = randomQuote.randomCitation
 
-console.log(quoteRandom)
-console.log(nameRandom)
+// console.log(quoteRandom)
+// console.log(nameRandom)
 
 
 
@@ -52,18 +56,27 @@ console.log(nameRandom)
 ***/
 
 // variable to add quote into quote box
-const printRandom = document.querySelector('#quote-box')
+const printRandom = document.getElementById('quote-box')
 
 
-//function that adds quote & source into quote box
+//printQuote Do Over
+
 function printQuote () {
-  
-  // change contents of quote box and run new random quote
-    printRandom.innerHTML = `<p class="quote">${quoteRandom}</p> <p class="source"> ${nameRandom} </p>`
-    getRandomQuote(quotes)
-  
+  //Create variable to store a random quote object from getRandomQuote function
+  let randomPrint = getRandomQuote(quotes); 
+
+  //Create another variable to store HTML String
+  let html = `<p class="quote">${randomPrint.quoteRandom} </p> <p class="source"> ${randomPrint.nameRandom} `
+  if (randomPrint.randomYear){
+    html = `${html} <span class="year"> ${randomPrint.randomYear} </span> </p>` 
+  } 
+  if (randomPrint.randomCitation){
+     html = `${html} <span class="citation"> ${randomPrint.randomCitation} </span> </p>`
+  } 
+  return html
 }
 
+printRandom.innerHTML = printQuote ();
 
 
 /***
