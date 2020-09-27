@@ -11,11 +11,39 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 
+const quotes = [
+  {quote: 'Trying to define yourself is like trying to bite your own teeth.', name: 'Alan Watts'},
+  {quote: 'What good is the warmth of summer, without the cold of winter to give it sweetness.', name: 'John Steinbeck' },
+  {quote: 'The man who does not read good books has no advantage over the man who cannot read them.', name: 'Mark Twain'},
+  {quote: 'Sometimes even to live is an act of courage.', name: 'Seneca'},
+  {quote: 'Freedom is nothing but a chance to be better.',name: 'Albert Camus'},
+
+]
 
 
 /***
  * `getRandomQuote` function
 ***/
+
+function getRandomQuote(array) {
+  //creates random number to insert into array value
+
+  const randomQuote = Math.ceil(Math.random() * quotes.length - 1) 
+
+  //creates variables so that the function can return both the quote and name
+  let quoteRandom = quotes[randomQuote].quote
+  let nameRandom = quotes[randomQuote].name
+  return {quoteRandom, nameRandom}
+}
+
+//initializes function and pulls the name and quote from it
+let randomQuote = getRandomQuote()
+
+let quoteRandom = randomQuote.quoteRandom
+let nameRandom = randomQuote.nameRandom
+
+console.log(quoteRandom)
+console.log(nameRandom)
 
 
 
@@ -23,7 +51,14 @@ project 1 - A Random Quote Generator
  * `printQuote` function
 ***/
 
+function printQuote () {
+  `
+  <h1>${quoteRandom}</h1>
 
+  
+  `
+
+}
 
 /***
  * click event listener for the print quote button
