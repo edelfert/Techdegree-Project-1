@@ -38,28 +38,9 @@ function getRandomQuote(array) {
   return {quoteRandom, nameRandom, randomYear, randomCitation}
 }
 
-//initializes function and pulls the data from object
-// let randomQuote = getRandomQuote(quotes)
-
-// let quoteRandom = randomQuote.quoteRandom
-// let nameRandom = randomQuote.nameRandom
-// let yearRandom = randomQuote.randomYear
-// let citationRandom = randomQuote.randomCitation
-
-// console.log(quoteRandom)
-// console.log(nameRandom)
-
-
-
 /***
  * `printQuote` function
 ***/
-
-// variable to add quote into quote box
-const printRandom = document.getElementById('quote-box')
-
-
-//printQuote Do Over
 
 function printQuote () {
   //Create variable to store a random quote object from getRandomQuote function
@@ -73,10 +54,10 @@ function printQuote () {
   if (randomPrint.randomCitation){
      html = `${html} <span class="citation"> ${randomPrint.randomCitation} </span> </p>`
   } 
-  return html
+  
+  document.getElementById('quote-box').innerHTML = html
 }
 
-printRandom.innerHTML = printQuote ();
 
 
 /***
