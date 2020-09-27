@@ -57,14 +57,14 @@ const printRandom = document.querySelector('#quote-box')
 
 //function that adds quote & source into quote box
 function printQuote () {
-  if (quoteRandom && nameRandom){
+  
+  // change contents of quote box and run new random quote
     printRandom.innerHTML = `<p class="quote">${quoteRandom}</p> <p class="source"> ${nameRandom} </p>`
-
-  }
-
+    getRandomQuote(quotes)
+  
 }
 
-printQuote()
+
 
 /***
  * click event listener for the print quote button
