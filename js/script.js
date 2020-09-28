@@ -48,13 +48,16 @@ function printQuote () {
 
   //Create another variable to store HTML String
   let html = `<p class="quote">${randomPrint.quoteRandom} </p> <p class="source"> ${randomPrint.nameRandom} `
+  
+  //Check if object has a year or citation
   if (randomPrint.randomYear){
     html = `${html} <span class="year"> ${randomPrint.randomYear} </span> </p>` 
   } 
   if (randomPrint.randomCitation){
      html = `${html} <span class="citation"> ${randomPrint.randomCitation} </span> </p>`
   } 
-  
+
+  //Print to html
   document.getElementById('quote-box').innerHTML = html
 }
 
