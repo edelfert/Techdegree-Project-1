@@ -28,14 +28,8 @@ const quotes = [
 function getRandomQuote(array) {
   //creates random number to insert into array value
 
-  const randomQuote = Math.ceil(Math.random() * quotes.length - 1) 
-
-  //creates variables so that the function can return quote, source, citation, and year
-  let quoteRandom = quotes[randomQuote].quote;
-  let nameRandom = quotes[randomQuote].source;
-  let randomYear = quotes[randomQuote].year;
-  let randomCitation = quotes[randomQuote].citation
-  return {quoteRandom, nameRandom, randomYear, randomCitation}
+  const randomQuote = Math.floor(Math.random() * quotes.length) 
+  return quotes[randomQuote]
 }
 
 /***
@@ -47,14 +41,14 @@ function printQuote () {
   let randomPrint = getRandomQuote(quotes); 
 
   //Create another variable to store HTML String
-  let html = `<p class="quote">${randomPrint.quoteRandom} </p> <p class="source"> ${randomPrint.nameRandom} `
+  let html = `<p class="quote">${randomPrint.quote} </p> <p class="source"> ${randomPrint.source} `
   
-  //Check if object has a year or citation
-  if (randomPrint.randomYear){
-    html = `${html} <span class="year"> ${randomPrint.randomYear} </span> </p>` 
+  //Check if quote has a year or citation
+  if (randomPrint.year){
+    html = `${html} <span class="year"> ${randomPrint.year} </span> </p>` 
   } 
-  if (randomPrint.randomCitation){
-     html = `${html} <span class="citation"> ${randomPrint.randomCitation} </span> </p>`
+  if (randomPrint.citation){
+     html = `${html} <span class="citation"> ${randomPrint.citation} </span> </p>`
   } 
 
   //Print to html
